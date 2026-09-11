@@ -54,10 +54,11 @@
   <main>
     <a class="back" href="portfolio-theme-preview.html">← 返回首页</a>
     <h1 class="title-motion">把模型、产品<br />和可靠性做在一起。</h1>
-    <p class="lead">这里记录完整的项目背景、技术路径与个人贡献。主页只放摘要，详情页才展开每个系统是如何被搭建、验证和交付的。</p>
+    <p class="lead">&#36825;&#37324;&#35760;&#24405;&#23436;&#25972;&#30340;&#39033;&#30446;&#32972;&#26223;&#12289;&#25216;&#26415;&#36335;&#24452;&#19982;&#20010;&#20154;&#36129;&#29486;&#12290;</p>
     <div class="eyebrow">PROJECTS / AI ENGINEERING</div>
 
-    <article class="project-detail" id="medical-record">
+    <div class="project-preview-zone" data-preview-zone>
+    <article class="project-detail" id="medical-record" data-preview-ready>
       <div class="project-kicker">项目 01 · 模型训练与部署 · 2025.10 — 2026.2</div>
       <h2 class="title-motion">首次病程记录智能写作与辅助生成系统</h2>
       <p>面向真实临床场景，设计首次病程记录智能生成系统，自动生成病例特点、诊断依据、鉴别诊断和诊疗计划，并结合医生书写习惯与山东省病历书写规范提升文书质量。</p>
@@ -65,6 +66,15 @@
       <h3>我的主要工作</h3>
       <ul><li>预处理 5000+ 条脱敏真实患者电子病历，覆盖心内科和胸外科，通过结构规范化、噪声过滤和数据重构提升训练数据质量。</li><li>基于 LlamaFactory 对 Qwen3-14B 进行多轮 SFT 与 DPO 训练，并结合 vLLM 实现本地化部署与高效推理。</li><li>使用 BeautifulSoup 采集公开医学知识资源，构建覆盖 200+ 疾病的鉴别诊断知识图谱。</li><li>设计 Generator–Reviewer–Refiner 多智能体协同流程，并以 checklist、ROUGE、BLEU 综合评估，两个指标得分均超过 80%。</li></ul>
     </article>
+      <figure class="project-preview project-preview-left">
+        <img src="medical-record-metrics.png" alt="Medical record evaluation metrics" />
+        <figcaption>Medical record - evaluation</figcaption>
+      </figure>
+      <figure class="project-preview project-preview-right">
+        <img src="medical-record-checklist.png" alt="Medical record checklist" />
+        <figcaption>Medical record - checklist</figcaption>
+      </figure>
+    </div>
 
     <div class="project-preview-zone" data-preview-zone>
       <article class="project-detail" id="how-far-ai">
@@ -86,7 +96,8 @@
       </figure>
     </div>
 
-    <article class="project-detail" id="weiyu-cay">
+    <div class="project-preview-zone" data-preview-zone>
+    <article class="project-detail" id="weiyu-cay" data-preview-ready>
       <div class="project-kicker">项目 03 · AI 全栈开发 · 2026.8 — 至今</div>
       <h2 class="title-motion">微屿 Cay——简约跨平台笔记与桌面便笺应用</h2>
       <p>基于 Tauri 2、Vite、React、TypeScript、Rust 与 SQLite 构建本地优先的跨平台桌面应用，支持 Markdown 编辑、双向链接、多类型资料管理与桌面便笺。</p>
@@ -95,8 +106,14 @@
       <ul><li>划分渲染层、领域服务层与系统能力层，实现前后端能力解耦。</li><li>集成 CodeMirror 6 构建 Markdown 编辑器，支持源码、分栏和预览三种视图，以及大纲导航、滚动同步和快捷格式化。</li><li>基于 UUIDv7 实现稳定双向链接，支持笔记重命名、文件夹移动后的引用解析、链接标题同步与失效链接识别。</li><li>基于 Tiptap 构建富文档编辑器与多类型资料库，统一管理富文档、纯文本、PDF、图片及 Office 文件，并支持预览、转换与 DOCX/PDF 导出。</li><li>实现桌面便笺、系统托盘、单实例唤醒与窗口状态管理，结合原子保存、版本冲突处理和退出前同步保障多窗口数据一致性。</li></ul>
       <a class="project-link" href="https://github.com/Tiome-tt/weiyu-cay" target="_blank" rel="noreferrer">查看项目仓库 →</a>
     </article>
+      <figure class="project-preview project-preview-left">
+        <img src="weiyu-cay-preview.png" alt="Weiyu Cay notes application" />
+        <figcaption>Weiyu Cay - application</figcaption>
+      </figure>
+    </div>
 
-    <article class="project-detail" id="biancang">
+    <div class="project-preview-zone" data-preview-zone>
+    <article class="project-detail" id="biancang" data-preview-ready>
       <div class="project-kicker">项目 04 · 数据预处理 · 2024.12 — 2025.1 / 2025.11 — 2025.12</div>
       <h2 class="title-motion">扁仓中医大模型</h2>
       <p>参与构建中医领域大语言模型 BianCang，基于中医药典、医学书籍与真实医院病历等数据，采用持续预训练与监督微调，增强模型在中医辨证分型、疾病诊断和治疗方案生成等任务中的知识理解与推理能力。</p>
@@ -106,8 +123,18 @@
       <ul><li>搜集并规范化处理中医书籍、药典等公开语料，完成文本清洗、格式统一与质量筛查，为持续预训练提供领域语料数据支持。</li><li>基于已有 QA 数据利用 LLM 扩展多轮中医问答数据集，补充回答要点与上下文信息，提升指令数据的多样性和任务适配性。</li></ul>
       <a class="project-link" href="https://ieeexplore.ieee.org/abstract/document/11177641" target="_blank" rel="noreferrer">了解 BianCang →</a>
     </article>
+      <figure class="project-preview project-preview-left">
+        <img src="biancang-output.png" alt="BianCang traditional Chinese medicine reasoning output" />
+        <figcaption>BianCang - reasoning output</figcaption>
+      </figure>
+      <figure class="project-preview project-preview-right">
+        <img src="biancang-data.png" alt="BianCang training data composition" />
+        <figcaption>BianCang - data and training</figcaption>
+      </figure>
+    </div>
 
-    <article class="project-detail" id="medical-kd">
+    <div class="project-preview-zone" data-preview-zone>
+    <article class="project-detail" id="medical-kd" data-preview-ready>
       <div class="project-kicker">项目 05 · 爬虫、数据预处理与模型训练 · 2025.2 — 2025.3</div>
       <h2 class="title-motion">知识蒸馏医疗实战项目</h2>
       <p>围绕 Qwen2.5-7B 的医疗推理能力增强，整理 4 个中文医疗与心理健康蒸馏数据集，使用 LLaMA-Factory 完成 LoRA 微调，并对比训练前后的推理与总结回复表现。</p>
@@ -116,6 +143,11 @@
       <ul><li>处理医疗病历蒸馏数据，构建包含问题、推理依据和总结回复的指令样本。</li><li>整合医疗、心理健康与中医等 4 个中文蒸馏数据集，共计 62,766 条数据，并完成格式转换与注册。</li><li>基于 LLaMA-Factory 使用 LoRA 对 Qwen2.5-7B-Base 进行微调，通过 BLEU、ROUGE 等指标对比训练前后的生成效果。</li><li>记录模型重复输出、推理标签不稳定等问题，分析提示词、数据规模与强化学习等后续优化方向。</li></ul>
       <div class="meta"><a class="project-link" href="https://www.cnblogs.com/tiome/p/18791530" target="_blank" rel="noreferrer">查看项目博客 →</a><a class="project-link" href="https://github.com/Tiome-tt/MedicalKD" target="_blank" rel="noreferrer">查看项目仓库 →</a></div>
     </article>
+      <figure class="project-preview project-preview-left">
+        <img src="medical-kd-preview.png" alt="Medical knowledge distillation project result" />
+        <figcaption>Medical KD - reasoning sample</figcaption>
+      </figure>
+    </div>
 
     <div class="preview-lightbox" data-lightbox aria-hidden="true" role="dialog" aria-modal="true" aria-label="How Far AI image preview">
       <button class="preview-lightbox-close" type="button" data-lightbox-close aria-label="Close image preview">&times;</button>
@@ -125,8 +157,8 @@
     <div class="footer">想了解完整技术细节，欢迎<a href="portfolio-theme-preview.html#contact">联系我</a>。</div>
   </main>
   <script>
-    const previewZone = document.querySelector('[data-preview-zone]');
-    if (previewZone) {
+    const previewZones = [...document.querySelectorAll('[data-preview-zone]')];
+    previewZones.forEach(previewZone => {
       const previewTargets = [...previewZone.querySelectorAll('.project-detail, .project-preview')];
       let hideTimer;
       const showPreview = () => {
@@ -144,7 +176,7 @@
         target.addEventListener('pointerenter', showPreview);
         target.addEventListener('pointerleave', hidePreview);
       });
-    }
+    });
 
     const lightbox =document.querySelector('[data-lightbox]');
     if (lightbox) {
@@ -155,7 +187,7 @@
         lightbox.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('lightbox-open');
       };
-      previewZone?.querySelectorAll('.project-preview').forEach(preview => {
+      document.querySelectorAll('.project-preview').forEach(preview => {
         preview.addEventListener('click', () => {
           const image = preview.querySelector('img');
           lightboxImage.src = image.src;
