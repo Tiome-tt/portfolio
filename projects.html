@@ -15,16 +15,32 @@
     .eyebrow { margin-top:28px; color:var(--accent); font:500 12px var(--utility); letter-spacing:.07em; text-transform:uppercase; } h1 { max-width:760px; margin:12px 0 22px; font:900 clamp(44px,8vw,88px)/1.06 var(--display); letter-spacing:-.065em; } .lead { max-width:650px; color:var(--muted); line-height:1.7; }
     .project-detail { position:relative; margin-top:48px; padding:28px; overflow:hidden; border:2px solid var(--ink); background:var(--surface); box-shadow:6px 6px 0 var(--ink); transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease; } .project-detail:hover { transform:translateY(-5px) rotate(-.25deg); box-shadow:9px 10px 0 var(--accent-2); border-color:var(--accent-2); } .project-detail::after { content:''; position:absolute; right:-35px; bottom:-50px; width:160px; height:160px; border:5px solid var(--ink); border-radius:45%; background:var(--soft); transform:rotate(24deg); transition:transform .35s ease; } .project-detail:hover::after { transform:rotate(30deg) scale(1.04); }
     #weiyu-cay::after { background:var(--accent-2); border-radius:50%; } #biancang::after { background:var(--accent); border-radius:16px; }
-    .project-preview-zone { position:relative; }
-    .project-preview { position:fixed; top:50%; z-index:4; width:min(280px,22vw); margin:0; padding:8px; border:2px solid var(--ink); background:var(--surface); box-shadow:6px 6px 0 var(--ink); opacity:0; pointer-events:none; transition:opacity .24s ease, transform .34s cubic-bezier(.22,.8,.28,1); }
+    .project-preview-zone {
+      position:relative;
+      width:100vw;
+      margin-left:calc(50% - 50vw);
+      padding:0 20px;
+      display:grid;
+      grid-template-columns:minmax(0,1fr) minmax(0,min(936px,calc(100vw - 140px))) minmax(0,1fr);
+      gap:24px;
+      align-items:center;
+    }
+    .project-preview { grid-row:1; position:relative; top:auto; z-index:4; width:min(360px,100%); margin:0; padding:8px; border:2px solid var(--ink); background:var(--surface); box-shadow:6px 6px 0 var(--ink); opacity:0; pointer-events:none; transition:opacity .24s ease, transform .34s cubic-bezier(.22,.8,.28,1), box-shadow .2s ease; cursor:zoom-in; }
     .project-preview img { display:block; width:100%; height:auto; border:1px solid var(--line); }
     .project-preview figcaption { padding:7px 2px 1px; color:var(--muted); font:10px var(--utility); letter-spacing:.02em; }
-    .project-preview-left { left:max(18px,calc(50% - 690px)); transform:translate(-24px,-50%) rotate(-2.2deg); }
-    .project-preview-right { right:max(18px,calc(50% - 690px)); transform:translate(24px,-50%) rotate(2.2deg); }
-    .project-preview-zone:hover .project-preview, .project-preview-zone.is-previewing .project-preview { opacity:1; pointer-events:auto; }
-    .project-preview-zone:hover .project-preview-left, .project-preview-zone.is-previewing .project-preview-left { transform:translate(0,-50%) rotate(-2.2deg); }
-    .project-preview-zone:hover .project-preview-right, .project-preview-zone.is-previewing .project-preview-right { transform:translate(0,-50%) rotate(2.2deg); }
+    .project-preview-left { grid-column:1; justify-self:end; transform:translateX(-20px) rotate(-2.2deg); }
+    .project-preview-right { grid-column:3; justify-self:start; transform:translateX(20px) rotate(2.2deg); }
+    .project-preview-zone.is-previewing .project-preview { opacity:1; pointer-events:auto; }
+    .project-preview-zone.is-previewing .project-preview-left { transform:translateX(0) rotate(-2.2deg); }
+    .project-preview-zone.is-previewing .project-preview-right { transform:translateX(0) rotate(2.2deg); }
     .project-preview:hover { box-shadow:9px 10px 0 var(--accent); }
+    .project-preview:focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
+    .preview-lightbox { position:fixed; inset:0; z-index:20; display:grid; place-items:center; padding:clamp(20px,5vw,70px); background:rgba(32,38,43,.78); opacity:0; visibility:hidden; pointer-events:none; transition:opacity .22s ease, visibility .22s ease; }
+    .preview-lightbox.is-open { opacity:1; visibility:visible; pointer-events:auto; }
+    .preview-lightbox img { max-width:calc(100vw - 60px); max-height:calc(100vh - 80px); object-fit:contain; padding:8px; border:2px solid var(--ink); background:var(--surface); box-shadow:10px 10px 0 var(--accent); }
+    .preview-lightbox-close { position:absolute; top:22px; right:24px; display:grid; place-items:center; width:44px; height:44px; border:2px solid var(--ink); background:var(--surface); box-shadow:4px 4px 0 var(--ink); color:var(--ink); font:700 28px/1 var(--body); cursor:pointer; }
+    .preview-lightbox-close:hover { background:var(--accent); color:var(--surface); transform:translate(-2px,-2px); }
+    body.lightbox-open { overflow:hidden; }
     .project-kicker { color:var(--accent); font:11px var(--utility); } h2 { max-width:760px; margin:14px 0 12px; font:800 clamp(28px,4vw,48px)/1.1 var(--display); letter-spacing:-.055em; } h3 { margin:24px 0 8px; font:800 18px var(--display); } p { max-width:730px; color:var(--muted); font-size:14px; line-height:1.7; }
     .meta { display:flex; flex-wrap:wrap; gap:9px; margin:16px 0; } .tag { display:inline-block; padding:7px 9px; border:2px solid var(--ink); background:var(--surface); box-shadow:2px 2px 0 var(--ink); font:10px var(--utility); transform:rotate(-1deg); transition:transform .2s ease, box-shadow .2s ease, background .2s ease; } .tag:nth-child(even) { background:var(--soft); transform:rotate(1.2deg); } .tag:hover { transform:translateY(-3px) rotate(0deg); box-shadow:4px 5px 0 var(--ink); background:var(--accent-2); color:var(--bg); } ul { max-width:740px; padding-left:19px; color:var(--muted); font-size:13px; line-height:1.75; } li::marker { color:var(--accent); }
     .project-link { display:inline-block; margin-top:8px; color:var(--ink); font:11px var(--utility); text-decoration:none; } .project-link:hover { color:var(--accent); }
@@ -101,9 +117,63 @@
       <div class="meta"><a class="project-link" href="https://www.cnblogs.com/tiome/p/18791530" target="_blank" rel="noreferrer">查看项目博客 →</a><a class="project-link" href="https://github.com/Tiome-tt/MedicalKD" target="_blank" rel="noreferrer">查看项目仓库 →</a></div>
     </article>
 
+    <div class="preview-lightbox" data-lightbox aria-hidden="true" role="dialog" aria-modal="true" aria-label="How Far AI image preview">
+      <button class="preview-lightbox-close" type="button" data-lightbox-close aria-label="Close image preview">&times;</button>
+      <img src="" alt="" />
+    </div>
+
     <div class="footer">想了解完整技术细节，欢迎<a href="portfolio-theme-preview.html#contact">联系我</a>。</div>
   </main>
   <script>
+    const previewZone = document.querySelector('[data-preview-zone]');
+    if (previewZone) {
+      const previewTargets = [...previewZone.querySelectorAll('.project-detail, .project-preview')];
+      let hideTimer;
+      const showPreview = () => {
+        clearTimeout(hideTimer);
+        previewZone.classList.add('is-previewing');
+      };
+      const hidePreview = () => {
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          const isOverTarget = previewTargets.some(target => target.matches(':hover'));
+          if (!isOverTarget) previewZone.classList.remove('is-previewing');
+        }, 180);
+      };
+      previewTargets.forEach(target => {
+        target.addEventListener('pointerenter', showPreview);
+        target.addEventListener('pointerleave', hidePreview);
+      });
+    }
+
+    const lightbox =document.querySelector('[data-lightbox]');
+    if (lightbox) {
+      const lightboxImage = lightbox.querySelector('img');
+      const lightboxClose = lightbox.querySelector('[data-lightbox-close]');
+      const closeLightbox = () => {
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('lightbox-open');
+      };
+      previewZone?.querySelectorAll('.project-preview').forEach(preview => {
+        preview.addEventListener('click', () => {
+          const image = preview.querySelector('img');
+          lightboxImage.src = image.src;
+          lightboxImage.alt = image.alt;
+          lightbox.classList.add('is-open');
+          lightbox.setAttribute('aria-hidden', 'false');
+          document.body.classList.add('lightbox-open');
+          lightboxClose.focus();
+        });
+      });
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', event => {
+        if (event.target === lightbox) closeLightbox();
+      });
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
+      });
+    }
     document.addEventListener('pointerdown', event => {
       if (event.button !== 0 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       const spark = document.createElement('span');
