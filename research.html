@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Research · Xiaoyang Meng</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Nunito:wght@400;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+    :root { --bg:#f8f6ee; --surface:#fffefa; --surface-2:#f0eedf; --ink:#20262b; --muted:#687177; --line:rgba(32,38,43,.2); --accent:#ee684c; --accent-2:#4b78c2; --soft:#e8d9bd; --display:'Nunito',sans-serif; --body:'Space Grotesk',sans-serif; --utility:'DM Mono',monospace; }
+    * { box-sizing:border-box; } body { margin:0; color:var(--ink); background:var(--bg); font-family:var(--body); background-image:repeating-linear-gradient(0deg, transparent 0 29px, rgba(75,120,194,.08) 29px 30px); }
+    a { color:inherit; } .topbar { position:sticky; top:0; z-index:2; display:flex; justify-content:space-between; align-items:center; gap:20px; padding:18px clamp(18px,5vw,72px); background:rgba(248,246,238,.9); backdrop-filter:blur(14px); border-bottom:1px solid var(--line); }
+    .brand { display:flex; align-items:center; gap:10px; font:900 16px var(--display); } .brand-mark { display:grid; place-items:center; width:34px; height:34px; border:2px solid var(--ink); border-radius:10px; background:var(--accent); transform:rotate(-8deg); box-shadow:4px 4px 0 var(--ink); }
+    .nav { display:flex; gap:18px; color:var(--muted); font-size:12px; } .nav a { position:relative; text-decoration:none; transition:color .2s ease; } .nav a::after { content:''; position:absolute; left:0; right:0; bottom:-6px; height:2px; background:var(--accent); transform:scaleX(0) rotate(-1deg); transform-origin:left; transition:transform .22s ease; } .nav a:hover { color:var(--accent); } .nav a:hover::after { transform:scaleX(1) rotate(-1deg); }
+    main { max-width:1080px; margin:0 auto; padding:58px clamp(18px,5vw,72px) 80px; } .back { color:var(--accent); font:11px var(--utility); text-decoration:none; }
+    .eyebrow { margin-top:28px; color:var(--accent); font:500 12px var(--utility); letter-spacing:.07em; text-transform:uppercase; } h1 { max-width:760px; margin:12px 0 22px; font:900 clamp(44px,8vw,88px)/1.06 var(--display); letter-spacing:-.065em; } .lead { max-width:680px; color:var(--muted); line-height:1.7; }
+    .note { margin:34px 0 22px; padding:16px 18px; border-left:5px solid var(--accent-2); background:var(--surface-2); color:var(--muted); font-size:12px; line-height:1.6; }
+    .research-card { margin-top:16px; padding:26px; border:2px solid var(--ink); background:var(--surface); box-shadow:6px 6px 0 var(--ink); transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease; } .research-card:hover { transform:translateY(-5px) rotate(.2deg); box-shadow:9px 10px 0 var(--accent); border-color:var(--accent); } .research-meta { color:var(--accent); font:11px var(--utility); } h2 { max-width:780px; margin:14px 0 12px; font:800 clamp(25px,4vw,43px)/1.1 var(--display); letter-spacing:-.05em; } h3 { margin:22px 0 7px; font:800 17px var(--display); } p { max-width:760px; color:var(--muted); font-size:14px; line-height:1.7; } .research-authors { margin:0 0 14px; color:var(--muted); font-size:12px; line-height:1.65; } .research-authors strong { color:var(--ink); } .repo-link { display:inline-block; margin-top:12px; color:var(--ink); font:11px var(--utility); text-decoration:none; transition:color .2s ease, transform .2s ease; } .repo-link:hover { color:var(--accent); transform:translateX(4px); } .tag-row { display:flex; flex-wrap:wrap; gap:9px; margin-top:15px; } .tag { display:inline-block; padding:7px 9px; border:2px solid var(--ink); background:var(--surface); box-shadow:2px 2px 0 var(--ink); font:10px var(--utility); transform:rotate(-1deg); transition:transform .2s ease, box-shadow .2s ease, background .2s ease; } .tag:nth-child(even) { background:var(--soft); transform:rotate(1.2deg); } .tag:hover { transform:translateY(-3px) rotate(0deg); box-shadow:4px 5px 0 var(--ink); background:var(--accent-2); color:var(--bg); }
+    .patents { margin-top:54px; } .patent-grid { display:grid; grid-template-columns:1fr; gap:18px; } .patent { position:relative; padding:22px 24px 22px 30px; border:2px solid var(--ink); background:var(--surface); box-shadow:6px 6px 0 var(--ink); transition:transform .25s ease, box-shadow .25s ease; } .patent::before { content:''; position:absolute; left:-2px; top:-2px; bottom:-2px; width:9px; background:var(--accent); border:2px solid var(--ink); border-right:0; } .patent:nth-child(2)::before { background:var(--accent-2); } .patent:hover { transform:translateY(-4px) rotate(-.2deg); box-shadow:8px 9px 0 var(--ink); } .patent h3 { margin-top:8px; font:800 21px/1.25 var(--display); letter-spacing:-.03em; } .patent p { margin-bottom:0; color:var(--muted); font-size:12px; line-height:1.6; }
+    .footer { margin-top:54px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:12px; } @keyframes click-pop { 0% { opacity:.85; transform:translate(-50%, -50%) scale(.25); } 70% { opacity:.45; } 100% { opacity:0; transform:translate(-50%, -50%) scale(2.4); } } @keyframes title-write { 0% { opacity:0; transform:translateY(16px); clip-path:inset(0 0 100% 0); } 100% { opacity:1; transform:translateY(0); clip-path:inset(0 0 0 0); } } .click-spark { position:fixed; z-index:100; width:18px; height:18px; border:2px solid var(--accent); border-radius:50%; pointer-events:none; animation:click-pop .55s ease-out forwards; } .title-motion { animation:title-write .85s cubic-bezier(.22, .8, .28, 1) both; } @media (max-width:680px) { .topbar { align-items:flex-start; flex-direction:column; } .research-card { padding:20px; } .patent-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header class="topbar"><div class="brand"><span class="brand-mark">&lt;/&gt;</span><span>Xiaoyang Meng · Research</span></div><nav class="nav"><a href="portfolio-theme-preview.html">首页</a><a href="projects.html">项目成果</a><a href="portfolio-theme-preview.html#contact">联系我</a></nav></header>
+  <main>
+    <a class="back" href="portfolio-theme-preview.html">← 返回首页</a>
+    <h1 class="title-motion">把临床问题，<br />变成可验证的模型。</h1>
+    <p class="lead">我的研究聚焦纵向电子病历、医疗大模型与临床预测，关注大模型在医疗场景中的可靠应用。下面按论文与专利分别整理完整成果。</p>
+    <div class="note">共 4 篇论文与 2 项专利，其中包含 2 篇第一作者论文。</div>
+    <div class="eyebrow section-eyebrow">Research Papers</div>
+
+    <article class="research-card">
+      <div class="research-meta">IEEE TRANSACTIONS ON BIOMEDICAL ENGINEERING · 中科院二区 · ACCEPTED</div>
+      <h2 class="title-motion">HiRMD: A System for Mortality Prediction via LLM-Based High-Risk Information Extraction and Diagnosis</h2>
+      <p class="research-authors"><strong>Xiaoyang Meng</strong>, Yang Liu, Weiyu Zhang*, Xiaoding Zhou, Xueping Peng, Fa Zhu, Athanasios V. Vasilakos, Wenpeng Lu.</p>
+      <h3>论文描述</h3>
+      <p>构建面向电子健康记录（EHRs）的住院死亡风险预测系统，通过提取患者高风险临床信息，并结合大语言模型医疗诊断生成结构化诊断语义，进一步设计融合患者纵向 EHRs、ICU 严重程度评分和大模型诊断语义的死亡风险预测模型，实现住院死亡风险预测。该方法在三个大型真实医疗数据集上均取得优于 SOTA 基准模型的预测性能。</p>
+      <div class="tag-row"><span class="tag">EHRs</span><span class="tag">LLMs</span><span class="tag">Clinical Prediction</span></div>
+      <a class="repo-link" href="https://github.com/Tiome-tt/HiRMD" target="_blank" rel="noreferrer">查看 Repository →</a>
+    </article>
+
+    <article class="research-card">
+      <div class="research-meta">IJCNN 2026 · CCF C · ACCEPTED</div>
+      <h2 class="title-motion">EHR-TASR: Leveraging Time-Aware Scoring and LLM Reasoning for Clinical Prediction</h2>
+      <p class="research-authors"><strong>Xiaoyang Meng</strong>, Xiaoding Zhou*, Yang Liu, Weiyu Zhang*, Hongjiao Guan, Xueping Peng, Wenpeng Lu.</p>
+      <h3>论文描述</h3>
+      <p>构建面向电子健康记录（EHRs）的临床风险预测框架，设计多尺度时间感知评分以捕捉患者生命体征的细粒度动态变化，并通过序列风险预测模型建模患者纵向健康状态，同时结合本地微调大语言模型生成结构化临床推理链，提升模型预测性能与临床可解释性。该方法在两个大型真实临床数据集的住院死亡预测与 30 天再入院预测任务中，优于 SOTA 基准模型。</p>
+      <div class="tag-row"><span class="tag">EHRs</span><span class="tag">LLMs</span><span class="tag">Reasoning</span><span class="tag">interpretable</span></div>
+      <a class="repo-link" href="https://github.com/Tiome-tt/EHR-TASR-main" target="_blank" rel="noreferrer">查看 Repository →</a>
+    </article>
+
+    <article class="research-card">
+      <div class="research-meta">ACL 2026 · CCF A · PUBLISHED</div>
+      <h2 class="title-motion">D<sup>2</sup>-RAG: Dual-Decision Retrieval-Augmented Generation via Multi-Dimensional Uncertainty and Utility-Aware Decoding</h2>
+      <p class="research-authors">Jinshuo Zhang, Xiaoding Zhou, Weiyu Zhang*, Guoqiang Chen, Ying Lian, <strong>Xiaoyang Meng</strong>, Yonghe Chen, Hongjiao Guan, Jiasheng Si, Wenpeng Lu.</p>
+      <h3>论文描述</h3>
+      <p>提出面向医学问答的双决策检索增强生成框架，通过融合概率分布、模型内部状态、输出一致性和自检能力等多维不确定性信号，构建轻量级检索决策模型，动态判断是否需要引入外部知识；进一步利用语义困惑度评估检索上下文的有效性，并设计效用感知对比解码策略，分别强化相关上下文、抑制噪声上下文对模型生成的干扰。该方法在四个医学问答数据集上均取得优于多种基线方法的性能，其中检索增强的 Llama3.1-8B 在 MedMCQA 上超过了未增强的 Llama3.1-70B。</p>
+      <div class="tag-row"><span class="tag">RAG</span><span class="tag">Uncertainty</span><span class="tag">Contrastive Decoding</span></div>
+      <a class="repo-link" href="https://github.com/zakelawen/d--rag" target="_blank" rel="noreferrer">查看 Repository →</a>
+    </article>
+
+    <article class="research-card">
+      <div class="research-meta">EMNLP 2026 · CCF B · ACCEPTED</div>
+      <h2 class="title-motion">Identifying Student Real Weaknesses: Learnable Error-Aware Distillation for Medical Question Answering</h2>
+      <p class="research-authors">Yonghe Chen, <strong>Xiaoyang Meng</strong>, Xiaoding Zhou, Wentian Zhang, Ruimeng Zhao, Ying Lian, Guoqiang Chen, Weiyu Zhang, Wenpeng Lu.</p>
+      <h3>论文描述</h3>
+      <p>提出面向医学问答的可学习错误感知知识蒸馏方法，通过分析学生模型在不同问题上的预测错误、不确定性和知识薄弱点，动态识别学生模型真正需要学习的内容，并调整教师模型的蒸馏信号。该方法能够减少对学生已掌握知识的重复蒸馏，使模型更加关注易错医学知识与复杂推理过程，从而提升轻量级模型在医学问答任务中的预测准确性和推理能力。</p>
+      <div class="tag-row"><span class="tag">Knowledge Distillation</span><span class="tag">Agents</span></div>
+      <a class="repo-link" href="https://github.com/Yh-C12138/LEAD" target="_blank" rel="noreferrer">查看 Repository →</a>
+    </article>
+
+    <section class="patents">
+      <div class="eyebrow">Patents</div>
+      <div class="patent-grid">
+        <article class="patent"><div class="research-meta">CN120183676A · 实审 · 第二发明人</div><h3>基于结构化医疗数据与大语言模型的死亡率预测方法和装置</h3><p>张维玉、<strong>孟肖扬</strong>、周小丁、刘阳、鹿文鹏。</p></article>
+        <article class="patent"><div class="research-meta">CN120526999A · 已授权 · 第四发明人</div><h3>基于频率感知横、纵向聚合的 ICU 患者死亡率预测方法</h3><p>张维玉、刘阳、周小丁、<strong>孟肖扬</strong>、鹿文鹏。</p></article>
+      </div>
+    </section>
+
+    <div class="footer">如果希望在大模型、医疗 AI 或 AI 应用等方向开展合作，欢迎<a href="portfolio-theme-preview.html#contact">联系我</a>。</div>
+  </main>
+  <script>
+    document.addEventListener('pointerdown', event => {
+      if (event.button !== 0 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const spark = document.createElement('span');
+      spark.className = 'click-spark';
+      spark.style.left = `${event.clientX}px`;
+      spark.style.top = `${event.clientY}px`;
+      document.body.appendChild(spark);
+      spark.addEventListener('animationend', () => spark.remove(), { once: true });
+    });
+  </script>
+</body>
+</html>
