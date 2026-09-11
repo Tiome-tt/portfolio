@@ -14,7 +14,17 @@
     main { max-width:1080px; margin:0 auto; padding:58px clamp(18px,5vw,72px) 80px; } .back { color:var(--accent); font:11px var(--utility); text-decoration:none; }
     .eyebrow { margin-top:28px; color:var(--accent); font:500 12px var(--utility); letter-spacing:.07em; text-transform:uppercase; } h1 { max-width:760px; margin:12px 0 22px; font:900 clamp(44px,8vw,88px)/1.06 var(--display); letter-spacing:-.065em; } .lead { max-width:650px; color:var(--muted); line-height:1.7; }
     .project-detail { position:relative; margin-top:48px; padding:28px; overflow:hidden; border:2px solid var(--ink); background:var(--surface); box-shadow:6px 6px 0 var(--ink); transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease; } .project-detail:hover { transform:translateY(-5px) rotate(-.25deg); box-shadow:9px 10px 0 var(--accent-2); border-color:var(--accent-2); } .project-detail::after { content:''; position:absolute; right:-35px; bottom:-50px; width:160px; height:160px; border:5px solid var(--ink); border-radius:45%; background:var(--soft); transform:rotate(24deg); transition:transform .35s ease; } .project-detail:hover::after { transform:rotate(30deg) scale(1.04); }
-    .project-detail:nth-of-type(3)::after { background:var(--accent-2); border-radius:50%; } .project-detail:nth-of-type(4)::after { background:var(--accent); border-radius:16px; }
+    #weiyu-cay::after { background:var(--accent-2); border-radius:50%; } #biancang::after { background:var(--accent); border-radius:16px; }
+    .project-preview-zone { position:relative; }
+    .project-preview { position:fixed; top:50%; z-index:4; width:min(280px,22vw); margin:0; padding:8px; border:2px solid var(--ink); background:var(--surface); box-shadow:6px 6px 0 var(--ink); opacity:0; pointer-events:none; transition:opacity .24s ease, transform .34s cubic-bezier(.22,.8,.28,1); }
+    .project-preview img { display:block; width:100%; height:auto; border:1px solid var(--line); }
+    .project-preview figcaption { padding:7px 2px 1px; color:var(--muted); font:10px var(--utility); letter-spacing:.02em; }
+    .project-preview-left { left:max(18px,calc(50% - 690px)); transform:translate(-24px,-50%) rotate(-2.2deg); }
+    .project-preview-right { right:max(18px,calc(50% - 690px)); transform:translate(24px,-50%) rotate(2.2deg); }
+    .project-preview-zone:hover .project-preview, .project-preview-zone.is-previewing .project-preview { opacity:1; pointer-events:auto; }
+    .project-preview-zone:hover .project-preview-left, .project-preview-zone.is-previewing .project-preview-left { transform:translate(0,-50%) rotate(-2.2deg); }
+    .project-preview-zone:hover .project-preview-right, .project-preview-zone.is-previewing .project-preview-right { transform:translate(0,-50%) rotate(2.2deg); }
+    .project-preview:hover { box-shadow:9px 10px 0 var(--accent); }
     .project-kicker { color:var(--accent); font:11px var(--utility); } h2 { max-width:760px; margin:14px 0 12px; font:800 clamp(28px,4vw,48px)/1.1 var(--display); letter-spacing:-.055em; } h3 { margin:24px 0 8px; font:800 18px var(--display); } p { max-width:730px; color:var(--muted); font-size:14px; line-height:1.7; }
     .meta { display:flex; flex-wrap:wrap; gap:9px; margin:16px 0; } .tag { display:inline-block; padding:7px 9px; border:2px solid var(--ink); background:var(--surface); box-shadow:2px 2px 0 var(--ink); font:10px var(--utility); transform:rotate(-1deg); transition:transform .2s ease, box-shadow .2s ease, background .2s ease; } .tag:nth-child(even) { background:var(--soft); transform:rotate(1.2deg); } .tag:hover { transform:translateY(-3px) rotate(0deg); box-shadow:4px 5px 0 var(--ink); background:var(--accent-2); color:var(--bg); } ul { max-width:740px; padding-left:19px; color:var(--muted); font-size:13px; line-height:1.75; } li::marker { color:var(--accent); }
     .project-link { display:inline-block; margin-top:8px; color:var(--ink); font:11px var(--utility); text-decoration:none; } .project-link:hover { color:var(--accent); }
@@ -38,15 +48,25 @@
       <ul><li>预处理 5000+ 条脱敏真实患者电子病历，覆盖心内科和胸外科，通过结构规范化、噪声过滤和数据重构提升训练数据质量。</li><li>基于 LlamaFactory 对 Qwen3-14B 进行多轮 SFT 与 DPO 训练，并结合 vLLM 实现本地化部署与高效推理。</li><li>使用 BeautifulSoup 采集公开医学知识资源，构建覆盖 200+ 疾病的鉴别诊断知识图谱。</li><li>设计 Generator–Reviewer–Refiner 多智能体协同流程，并以 checklist、ROUGE、BLEU 综合评估，两个指标得分均超过 80%。</li></ul>
     </article>
 
-    <article class="project-detail" id="how-far-ai">
-      <div class="project-kicker">项目 02 · AI 全栈开发 · 2026.4 — 2026.6</div>
-      <h2 class="title-motion">How Far AI——AI 前沿情报智能分析平台</h2>
-      <p>聚合新闻、论文、开源项目和社区热点，利用大语言模型完成内容分析、知识沉淀与趋势报告生成，实现 AI 技术动态的自动化追踪。</p>
-      <div class="meta"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">MySQL</span><span class="tag">Scheduler / Worker</span><span class="tag">LLM API</span></div>
-      <h3>我的主要工作</h3>
-      <ul><li>搭建热点新闻、技术知识、前沿模型、演进时间线和趋势报告等核心模块。</li><li>接入 11 个 RSS/Atom 新闻源及 GitHub、Hacker News、Hugging Face、Bilibili 等平台，完成筛选、去重与结构化入库。</li><li>调用大语言模型完成新闻摘要、观点提取、技术标签分类与影响评估，并通过超时控制、规则兜底和多模型切换提高稳定性。</li><li>基于 Scheduler、任务队列与 Worker 编排采集、内容补全、知识发现和报告生成任务，设计融合来源可信度、相关度与平台热度的 Hot Score。</li></ul>
-      <a class="project-link" href="http://47.104.105.138/" target="_blank" rel="noreferrer">访问项目演示 →</a>
-    </article>
+    <div class="project-preview-zone" data-preview-zone>
+      <article class="project-detail" id="how-far-ai">
+        <div class="project-kicker">项目 02 · AI 全栈开发 · 2026.4 — 2026.6</div>
+        <h2 class="title-motion">How Far AI——AI 前沿情报智能分析平台</h2>
+        <p>聚合新闻、论文、开源项目和社区热点，利用大语言模型完成内容分析、知识沉淀与趋势报告生成，实现 AI 技术动态的自动化追踪。</p>
+        <div class="meta"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">MySQL</span><span class="tag">Scheduler / Worker</span><span class="tag">LLM API</span></div>
+        <h3>我的主要工作</h3>
+        <ul><li>搭建热点新闻、技术知识、前沿模型、演进时间线和趋势报告等核心模块。</li><li>接入 11 个 RSS/Atom 新闻源及 GitHub、Hacker News、Hugging Face、Bilibili 等平台，完成筛选、去重与结构化入库。</li><li>调用大语言模型完成新闻摘要、观点提取、技术标签分类与影响评估，并通过超时控制、规则兜底和多模型切换提高稳定性。</li><li>基于 Scheduler、任务队列与 Worker 编排采集、内容补全、知识发现和报告生成任务，设计融合来源可信度、相关度与平台热度的 Hot Score。</li></ul>
+        <a class="project-link" href="http://47.104.105.138/" target="_blank" rel="noreferrer">访问项目演示 →</a>
+      </article>
+      <figure class="project-preview project-preview-left">
+        <img src="how-far-ai-home.png" alt="How Far AI 首页演示截图" />
+        <figcaption>How Far AI · 首页</figcaption>
+      </figure>
+      <figure class="project-preview project-preview-right">
+        <img src="how-far-ai-today.png" alt="How Far AI 今日 AI 信息流演示截图" />
+        <figcaption>How Far AI · 今日 AI</figcaption>
+      </figure>
+    </div>
 
     <article class="project-detail" id="weiyu-cay">
       <div class="project-kicker">项目 03 · AI 全栈开发 · 2026.8 — 至今</div>
