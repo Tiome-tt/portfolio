@@ -222,16 +222,16 @@
     .code-sticker span:first-child { color: var(--ink); }
     .code-sticker:hover { transform: rotate(0deg) translateY(-4px); box-shadow: 6px 7px 0 var(--ink); }
     .character-wrap .sticker.one { background: var(--accent); color: var(--ink); }
-    .like-counter { position: absolute; right: 4%; bottom: 16px; z-index: 4; display: flex; flex-direction: column; align-items: center; gap: 4px; }
-    .like-button { display: inline-grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 2px solid var(--ink); border-radius: 50%; background: var(--surface); color: var(--ink); box-shadow: 4px 4px 0 var(--ink); cursor: pointer; transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease; }
-    .like-button:hover { transform: translate(-2px, -2px) rotate(-5deg); box-shadow: 6px 7px 0 var(--ink); background: var(--soft); }
-    .like-button:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0 var(--ink); }
-    .like-button:disabled { cursor: wait; opacity: .72; }
-    .like-button:focus-visible { outline: 3px solid var(--accent-2); outline-offset: 4px; }
-    .like-icon { color: var(--accent); font: 25px/1 var(--body); transition: transform .2s ease, color .2s ease; }
-    .like-button.is-liked { background: var(--accent); color: var(--ink); }
-    .like-button.is-liked .like-icon { color: var(--ink); animation: like-pop .42s cubic-bezier(.22,.8,.28,1); }
-    .like-count { color: var(--muted); font: 10px var(--utility); line-height: 1; }
+    .like-counter { position: absolute; right: 4%; bottom: 18px; z-index: 4; display: flex; align-items: center; gap: 3px; }
+    .like-button { display: inline-grid; place-items: center; width: 29px; height: 29px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--accent); cursor: pointer; transition: transform .2s ease, opacity .2s ease; }
+    .like-button:hover { transform: scale(1.14) rotate(-5deg); opacity: .88; }
+    .like-button:active { transform: scale(.94); }
+    .like-button:disabled { cursor: wait; opacity: .55; }
+    .like-button:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 3px; }
+    .like-icon { color: var(--accent); font: 19px/1 var(--body); transition: transform .2s ease, color .2s ease; }
+    .like-button.is-liked { background: transparent; color: var(--accent); }
+    .like-button.is-liked .like-icon { color: var(--accent); animation: like-pop .42s cubic-bezier(.22,.8,.28,1); }
+    .like-count { color: var(--muted); font: 9px var(--utility); line-height: 1; opacity: .8; }
     .like-status { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
     @keyframes like-pop { 0% { transform: scale(.7); } 65% { transform: scale(1.24) rotate(-8deg); } 100% { transform: scale(1); } }
     .click-spark { position: fixed; z-index: 100; width: 18px; height: 18px; border: 2px solid var(--accent); border-radius: 50%; pointer-events: none; animation: click-pop .55s ease-out forwards; }
